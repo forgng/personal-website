@@ -7,7 +7,10 @@ import { name, email, links } from '../config'
 const IndexPage = () => (
   <MainPage>
     <Container>
-      <ImageGianluca src={avatar} alt={name} />
+      <ImageGianluca
+        src="https://abitcompany-cdn.sirv.com/personal/avatar.png"
+        alt={name}
+      />
       <Name>{name}</Name>
       <IconsContainer>
         {links.map(link => (

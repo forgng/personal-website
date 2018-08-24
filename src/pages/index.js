@@ -1,7 +1,7 @@
 import React from 'react'
 import { SocialIcon, Link } from '../components'
 import styled, { css } from 'styled-components'
-import avatar from '../avatar.png'
+// import avatar from '../avatar.png'
 import { name, email, links } from '../config'
 
 const IndexPage = () => (

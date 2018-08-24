@@ -7,6 +7,6 @@ export const links = [
   },
   {
     platform: 'linkedin',
-    link: 'https://www.linkedin.com/in/gianluca-chiap-521986a8/',
+    link: 'www.linkedin.com/in/gianluca-chiap',
   },
 ]

@@ -7,7 +7,7 @@ import { name, email, links } from '../config'
 const IndexPage = () => (
   <MainPage>
     <Container>
-      <ImageGianluca src={avatar} />
+      <ImageGianluca src={avatar} alt={name} />
       <Name>{name}</Name>
       <IconsContainer>
         {links.map(link => (

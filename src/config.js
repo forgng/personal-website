@@ -7,6 +7,10 @@ export const links = [
   },
   {
     platform: 'linkedin',
-    link: 'www.linkedin.com/in/gianluca-chiap',
+    link: 'https://www.linkedin.com/in/gianluca-chiap',
+  },
+  {
+    platform: 'abitcompany',
+    link: 'https://abit.company',
   },
 ]

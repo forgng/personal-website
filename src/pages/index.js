@@ -1,6 +1,6 @@
 import React from 'react'
-import { SocialIcon, Link } from '../components'
-import styled, { css } from 'styled-components'
+import { SocialIcon } from '../components'
+import styled from 'styled-components'
 // import avatar from '../avatar.png'
 import { name, email, links } from '../config'
 

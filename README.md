@@ -1,3 +1,4 @@
 # Personal website
 
-Built with gatsby, hosted on Netlify
+[@forgiangi](https://twitter.com/forgiangi) personal website
+Built with [Gatsby](https://www.gatsbyjs.org/), hosted on [Netlify](https://www.netlify.com/)

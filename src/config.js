@@ -1,10 +1,6 @@
 export const name = 'Gianluca Chiap'
-export const email = 'gianlucachiap@gmail.com'
+export const emails = ['gianlucachiap@gmail.com', 'gianluca@abit.company']
 export const links = [
-  {
-    platform: 'github',
-    link: 'https://github.com/forgiangi',
-  },
   {
     platform: 'linkedin',
     link: 'https://www.linkedin.com/in/gianluca-chiap',
@@ -12,5 +8,17 @@ export const links = [
   {
     platform: 'abitcompany',
     link: 'https://abit.company',
+  },
+  {
+    platform: 'github',
+    link: 'https://github.com/forgiangi',
+  },
+  {
+    platform: 'twitter',
+    link: 'https://twitter.com/forgiangi',
+  },
+  {
+    platform: 'medium',
+    link: 'https://medium.com/@gianluca_14420/',
   },
 ]

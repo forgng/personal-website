@@ -140,6 +140,16 @@ const SocialIcon = ({ social, link }) => {
 const SocialIconWrapper = styled.div`
   height: 40px;
   width: 40px;
+  @media screen and (max-width: 750px), (max-height: 750px) {
+    height: 35px;
+    width: 35px;
+    margin: 0 12px;
+  }
+  @media screen and (max-width: 525px), (max-height: 525px) {
+    height: 30px;
+    width: 30px;
+    margin: 0 10px;
+  }
   transform: rotate(45deg);
   ${props =>
     props.facebook &&

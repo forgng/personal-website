@@ -6,7 +6,7 @@ import { name, emails, links } from '../config'
 
 const ringSize = 580
 
-const IndexPage = () => (
+const IndexPage = ({ width }) => (
   <MainPage>
     <Container>
       <ProfileContainer>
@@ -105,6 +105,33 @@ const Ring = styled.div`
       animation: ${yellowanim} linear 6s;
       animation-iteration-count: infinite;
     `};
+  @media screen and (max-width: 750px), (max-height: 750px) {
+    width: ${ringSize - 100}px;
+    height: ${ringSize - 100}px;
+    border-radius: ${ringSize - 100}px;
+    top: -40px;
+  }
+  @media screen and (max-width: 650px), (max-height: 650px) {
+    width: ${ringSize - 130}px;
+    height: ${ringSize - 130}px;
+    border-radius: ${ringSize - 130}px;
+    top: -30px;
+  }
+  @media screen and (max-width: 575px), (max-height: 575px) {
+    width: ${ringSize - 180}px;
+    height: ${ringSize - 180}px;
+    border-radius: ${ringSize - 180}px;
+    top: -30px;
+  }
+  @media screen and (max-width: 525px), (max-height: 525px) {
+    width: ${ringSize - 230}px;
+    height: ${ringSize - 230}px;
+    border-radius: ${ringSize - 230}px;
+    top: -30px;
+  }
+  @media screen and (max-width: 475px), (max-height: 475px) {
+    display: none;
+  }
 `
 const EmailsContainer = styled.div`
   display: flex;
@@ -144,6 +171,12 @@ const EmailLink = styled.a`
   @media only screen and (max-width: ${props => props.theme.smallScreen}) {
     font-size: 1rem;
   }
+  @media screen and (max-width: 750px), (max-height: 750px) {
+    font-size: 1.1rem;
+  }
+  @media screen and (max-width: 525px), (max-height: 525px) {
+    font-size: 1rem;
+  }
 `
 
 const IconsContainer = styled.div`
@@ -158,8 +191,15 @@ const Name = styled.h1`
   font-weight: 200;
   margin: 0;
   text-align: center;
+  margin-top: 0;
   @media only screen and (max-width: ${props => props.theme.smallScreen}) {
     font-size: 2.2rem;
+  }
+  @media screen and (max-width: 750px), (max-height: 750px) {
+    font-size: 2.2rem;
+  }
+  @media screen and (max-width: 475px), (max-height: 475px) {
+    font-size: 2rem;
   }
 `
 const Container = styled.div`
@@ -171,6 +211,38 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 750px), (max-height: 750px) {
+    height: ${ringSize - 170}px;
+    width: ${ringSize - 170}px;
+  }
+  @media screen and (max-width: 650px), (max-height: 650px) {
+    height: ${ringSize - 200}px;
+    width: ${ringSize - 200}px;
+  }
+  @media screen and (max-width: 575px), (max-height: 575px) {
+    height: ${ringSize - 250}px;
+    width: ${ringSize - 250}px;
+  }
+  @media screen and (max-width: 525px), (max-height: 525px) {
+    height: ${ringSize - 300}px;
+    width: ${ringSize - 300}px;
+  }
+  @media screen and (max-width: 475px), (max-height: 475px) {
+    height: 350px;
+    width: 350px;
+  }
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    border-radius: 0;
+    padding: 10px;
+  }
+  @media screen and (max-height: 400px) {
+    width: 400px;
+    height: 100vh;
+    border-radius: 0;
+    padding: 10px;
+  }
 `
 
 const ProfileContainer = styled.div`
@@ -182,13 +254,21 @@ const ProfileContainer = styled.div`
 const ImageGianluca = styled.img`
   height: 200px;
   width: 200px;
+  @media screen and (max-width: 750px), (max-height: 750px) {
+    height: 150px;
+    width: 150px;
+  }
+  @media screen and (max-width: 575px), (max-height: 575px) {
+    height: 100px;
+    width: 100px;
+  }
 `
 const MainPage = styled.div`
   min-height: 100vh;
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   background-color: ${props => props.theme.mainColor};
 `
 

@@ -1,16 +1,16 @@
-import React from 'react'
-import { SocialIcon, BaseLayout } from '../components'
-import styled, { css, keyframes } from 'styled-components'
-import { graphql } from 'gatsby'
-import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
-import { name, emails, links } from '../config'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
+import React from 'react';
+import { SocialIcon, BaseLayout } from '../components';
+import styled, { css, keyframes } from 'styled-components';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
+import { name, emails, links } from '../config';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
-const ringSize = 580
+const ringSize = 580;
 
-const transitionName = 'reduce'
-const duration = 2000
+const transitionName = 'reduce';
+const duration = 2000;
 const IndexPage = ({ data }) => (
   <BaseLayout>
     <MainPage>
@@ -22,41 +22,41 @@ const IndexPage = ({ data }) => (
         transitionLeave={false}
       >
         <AnimationCircle />
-        <Container>
-          <ProfileContainer>
-            <AvatarContainer>
-              <Img fluid={data.avatar.childImageSharp.fluid} />
-            </AvatarContainer>
-            <Name>{name}</Name>
-            <IconsContainer>
-              {links.map(link => (
-                <SocialIcon
-                  social={link.platform}
-                  link={link.link}
-                  key={link.platform}
-                />
-              ))}
-            </IconsContainer>
-            <EmailsContainer>
-              {emails.map(email => (
-                <EmailLink target="_blank" href={`mailto:${email}`} key={email}>
-                  {email}
-                </EmailLink>
-              ))}
-            </EmailsContainer>
-          </ProfileContainer>
-          <Ring red />
-          <Ring green />
-          <Ring blue />
-          <Ring yellow />
-        </Container>
       </ReactCSSTransitionGroup>
+      <Container>
+        <ProfileContainer>
+          <AvatarContainer>
+            <Img fluid={data.avatar.childImageSharp.fluid} />
+          </AvatarContainer>
+          <Name>{name}</Name>
+          <IconsContainer>
+            {links.map(link => (
+              <SocialIcon
+                social={link.platform}
+                link={link.link}
+                key={link.platform}
+              />
+            ))}
+          </IconsContainer>
+          <EmailsContainer>
+            {emails.map(email => (
+              <EmailLink target="_blank" href={`mailto:${email}`} key={email}>
+                {email}
+              </EmailLink>
+            ))}
+          </EmailsContainer>
+        </ProfileContainer>
+        <Ring red />
+        <Ring green />
+        <Ring blue />
+        <Ring yellow />
+      </Container>
     </MainPage>
   </BaseLayout>
-)
+);
 IndexPage.propTypes = {
   data: PropTypes.object,
-}
+};
 export const query = graphql`
   query {
     avatar: file(relativePath: { eq: "avatar.png" }) {
@@ -67,13 +67,13 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const redanim = keyframes`
   0%   {transform:  rotate(0deg)   scaleX(0.90) scaleY(1.00);}
   50%  {transform:  rotate(180deg) scaleX(0.90) scaleY(1.00);}
   100% {transform:  rotate(360deg) scaleX(0.90) scaleY(1.00);}
-`
+`;
 
 const greenanim = keyframes`
   0%   {transform:  rotate(31deg)  scaleX(0.90) scaleY(1.00);}
@@ -81,13 +81,13 @@ const greenanim = keyframes`
   50%  {transform:  rotate(211deg) scaleX(0.90) scaleY(1.00);}
   75%  {transform:  rotate(301deg) scaleX(1.00) scaleY(0.90);}
   100% {transform:  rotate(391deg) scaleX(0.90) scaleY(1.00);}
-`
+`;
 
 const blueanim = keyframes`
     0%   {transform:  rotate(413deg) scaleX(0.90) scaleY(1.00);}
   50%  {transform:  rotate(233deg) scaleX(0.90) scaleY(1.00);}
   100% {transform:  rotate(53deg)  scaleX(0.90) scaleY(1.00);}
-`
+`;
 
 const yellowanim = keyframes`
     0%   {transform:  rotate(472deg) scaleX(0.90) scaleY(1.00);}
@@ -95,7 +95,7 @@ const yellowanim = keyframes`
   50%  {transform:  rotate(292deg) scaleX(0.90) scaleY(1.00);}
   75%  {transform:  rotate(202deg) scaleX(1.00) scaleY(0.90);}
   100% {transform:  rotate(112deg) scaleX(0.90) scaleY(1.00);}
-`
+`;
 
 const Ring = styled.div`
   width: ${ringSize}px;
@@ -162,12 +162,12 @@ const Ring = styled.div`
   @media screen and (max-width: 475px), (max-height: 475px) {
     display: none;
   }
-`
+`;
 const EmailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`
+`;
 const EmailLink = styled.a`
   color: ${props => props.theme.baseTextColor};
   padding: 5px 0;
@@ -207,7 +207,7 @@ const EmailLink = styled.a`
   @media screen and (max-width: 525px), (max-height: 525px) {
     font-size: 1rem;
   }
-`
+`;
 
 const IconsContainer = styled.div`
   display: flex;
@@ -215,7 +215,7 @@ const IconsContainer = styled.div`
   justify-content: center;
   margin: 15px 0;
   flex-wrap: wrap;
-`
+`;
 const Name = styled.h1`
   font-size: 3.2rem;
   font-weight: 200;
@@ -231,7 +231,7 @@ const Name = styled.h1`
   @media screen and (max-width: 475px), (max-height: 475px) {
     font-size: 2rem;
   }
-`
+`;
 const MainPage = styled.div`
   min-height: 100vh;
   display: flex;
@@ -239,13 +239,13 @@ const MainPage = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #263238;
-`
+`;
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 100;
-`
+`;
 const Container = styled.div`
   border-radius: 50%;
   height: ${ringSize - 70}px;
@@ -288,25 +288,43 @@ const Container = styled.div`
     border-radius: 0;
     padding: 10px;
   }
-`
+`;
 const AnimationCircle = styled.div`
   background-color: white;
   position: fixed;
-  &.${transitionName}-appear {
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 170vh;
-    height: 170vh;
-  }
+  @media screen and (min-width: 475px) {
+    &.${transitionName}-appear {
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 170vh;
+      height: 170vh;
+      z-index: 1000;
+    }
 
-  &.${transitionName}-appear.${transitionName}-appear-active {
-    height: ${ringSize - 70}px;
-    width: ${ringSize - 70}px;
-    transition: all ${duration}ms cubic-bezier(0.42, 0, 0.58, 1);
+    &.${transitionName}-appear.${transitionName}-appear-active {
+      height: ${ringSize - 70}px;
+      width: ${ringSize - 70}px;
+      transition: all ${duration}ms cubic-bezier(0.42, 0, 0.58, 1);
+      z-index: -1;
+    }
   }
-`
+  @media screen and (max-width: 475px), (max-height: 475px) {
+    &.${transitionName}-appear {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vh;
+      height: 100vh;
+    }
+
+    &.${transitionName}-appear.${transitionName}-appear-active {
+      height: 350px;
+      transition: all ${duration}ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+  }
+`;
 
 const AvatarContainer = styled.div`
   height: 200px;
@@ -319,6 +337,6 @@ const AvatarContainer = styled.div`
     height: 100px;
     width: 100px;
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

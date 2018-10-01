@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { ThemeProvider, injectGlobal } from 'styled-components'
-import Head from '../components/Head'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ThemeProvider, injectGlobal } from 'styled-components';
+import Head from '../components/Head';
 
 const theme = {
   mainColor: '#161338',
   baseTextColor: '#161338',
   smallScreen: '400px',
-}
+};
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -16,7 +16,10 @@ const Layout = ({ children }) => (
       <main>{children}</main>
     </div>
   </ThemeProvider>
-)
+);
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 injectGlobal`
   *,
@@ -27,7 +30,7 @@ injectGlobal`
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Karla', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
     letter-spacing: 1px;
@@ -36,6 +39,6 @@ injectGlobal`
   ::-webkit-scrollbar {
     display: none;
   }
-`
+`;
 
-export default Layout
+export default Layout;

@@ -28,7 +28,7 @@ const StyledExternalLink = styled.a`
   ${basicLinkStyle};
 `
 
-export default ({ children, to, ...other }) => {
+const Link = ({ children, to, ...other }) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
@@ -48,3 +48,5 @@ export default ({ children, to, ...other }) => {
     </StyledExternalLink>
   )
 }
+
+export default Link

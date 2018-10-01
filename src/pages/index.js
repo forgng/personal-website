@@ -9,45 +9,54 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
 
 const ringSize = 580
 
+const transitionName = 'reduce'
+const duration = 2000
 const IndexPage = ({ data }) => (
   <BaseLayout>
     <MainPage>
-      {/* <AnimationContainer> */}
-      {/* <Content> */}
-      <Container>
-        <ProfileContainer>
-          <ImageContainer>
-            <Img fluid={data.avatar.childImageSharp.fluid} />
-          </ImageContainer>
-          <Name>{name}</Name>
-          <IconsContainer>
-            {links.map(link => (
-              <SocialIcon
-                social={link.platform}
-                link={link.link}
-                key={link.platform}
-              />
-            ))}
-          </IconsContainer>
-          <EmailsContainer>
-            {emails.map(email => (
-              <EmailLink target="_blank" href={`mailto:${email}`} key={email}>
-                {email}
-              </EmailLink>
-            ))}
-          </EmailsContainer>
-        </ProfileContainer>
-        {/* <Ring red />
-            <Ring green />
-            <Ring blue />
-            <Ring yellow /> */}
-      </Container>
-      {/* </Content> */}
-      {/* </AnimationContainer> */}
+      <ReactCSSTransitionGroup
+        transitionName={transitionName}
+        transitionAppear={true}
+        transitionAppearTimeout={duration}
+        transitionEnter={false}
+        transitionLeave={false}
+      >
+        <AnimationCircle />
+        <Container>
+          <ProfileContainer>
+            <AvatarContainer>
+              <Img fluid={data.avatar.childImageSharp.fluid} />
+            </AvatarContainer>
+            <Name>{name}</Name>
+            <IconsContainer>
+              {links.map(link => (
+                <SocialIcon
+                  social={link.platform}
+                  link={link.link}
+                  key={link.platform}
+                />
+              ))}
+            </IconsContainer>
+            <EmailsContainer>
+              {emails.map(email => (
+                <EmailLink target="_blank" href={`mailto:${email}`} key={email}>
+                  {email}
+                </EmailLink>
+              ))}
+            </EmailsContainer>
+          </ProfileContainer>
+          <Ring red />
+          <Ring green />
+          <Ring blue />
+          <Ring yellow />
+        </Container>
+      </ReactCSSTransitionGroup>
     </MainPage>
   </BaseLayout>
 )
-
+IndexPage.propTypes = {
+  data: PropTypes.object,
+}
 export const query = graphql`
   query {
     avatar: file(relativePath: { eq: "avatar.png" }) {
@@ -58,18 +67,6 @@ export const query = graphql`
       }
     }
   }
-`
-// const AnimationContainer = styled.div`
-//   width: 100vw;
-//   height: 100vh;
-//   /* position: absolute;
-//   top: 0;
-//   left: 0; */
-//   background-color: red;
-// `
-const ImageContainer = styled.div`
-  width: 200px;
-  height: 200px;
 `
 
 const redanim = keyframes`
@@ -108,6 +105,8 @@ const Ring = styled.div`
   mix-blend-mode: screen;
   background: transparent;
   top: -40px;
+  transition: opacity 500ms ease-in;
+
   ${props =>
     props.red &&
     css`
@@ -233,20 +232,31 @@ const Name = styled.h1`
     font-size: 2rem;
   }
 `
+const MainPage = styled.div`
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #263238;
+`
+const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+`
 const Container = styled.div`
   border-radius: 50%;
-  &.cover {
-    height: 100vh;
-    width: 100vw;
-  }
-  /* height: ${ringSize - 70}px;
-  width: ${ringSize - 70}px; */
+  height: ${ringSize - 70}px;
+  width: ${ringSize - 70}px;
   background-color: #fff;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   @media screen and (max-width: 750px), (max-height: 750px) {
     height: ${ringSize - 170}px;
     width: ${ringSize - 170}px;
@@ -279,14 +289,26 @@ const Container = styled.div`
     padding: 10px;
   }
 `
+const AnimationCircle = styled.div`
+  background-color: white;
+  position: fixed;
+  &.${transitionName}-appear {
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 170vh;
+    height: 170vh;
+  }
 
-const ProfileContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 100;
+  &.${transitionName}-appear.${transitionName}-appear-active {
+    height: ${ringSize - 70}px;
+    width: ${ringSize - 70}px;
+    transition: all ${duration}ms cubic-bezier(0.42, 0, 0.58, 1);
+  }
 `
-const ImageGianluca = styled.img`
+
+const AvatarContainer = styled.div`
   height: 200px;
   width: 200px;
   @media screen and (max-width: 750px), (max-height: 750px) {
@@ -297,16 +319,6 @@ const ImageGianluca = styled.img`
     height: 100px;
     width: 100px;
   }
-`
-
-// const MainPage = styled.div``
-const MainPage = styled.div`
-  min-height: 100vh;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  background-color: #263238;
 `
 
 export default IndexPage

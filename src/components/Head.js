@@ -21,7 +21,7 @@ const Head = () => (
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://gianlucachiap.me/avatar.png" />
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
+      href="https://fonts.googleapis.com/css?family=Karla"
       rel="stylesheet"
     />
   </Helmet>

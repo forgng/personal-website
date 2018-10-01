@@ -269,7 +269,7 @@ const MainPage = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.mainColor};
+  background-color: #263238;
 `
 
 export default IndexPage

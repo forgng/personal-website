@@ -10,7 +10,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 const ringSize = 580;
 
 const transitionName = 'reduce';
-const duration = 2000;
+const duration = 2500;
 const IndexPage = ({ data }) => (
   <BaseLayout>
     <MainPage>
@@ -301,6 +301,7 @@ const AnimationCircle = styled.div`
       width: 170vh;
       height: 170vh;
       z-index: 1000;
+      opacity: 1;
     }
 
     &.${transitionName}-appear.${transitionName}-appear-active {
@@ -308,6 +309,7 @@ const AnimationCircle = styled.div`
       width: ${ringSize - 70}px;
       transition: all ${duration}ms cubic-bezier(0.42, 0, 0.58, 1);
       z-index: -1;
+      opacity: 0;
     }
   }
   @media screen and (max-width: 475px), (max-height: 475px) {

@@ -1,8 +1,9 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
+    siteUrl: `https://gianlucachiap.me`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -53,4 +54,4 @@ module.exports = {
       },
     },
   ],
-}
+};

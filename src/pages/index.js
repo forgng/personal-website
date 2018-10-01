@@ -1,46 +1,77 @@
 import React from 'react'
-import { SocialIcon } from '../components'
+import { SocialIcon, BaseLayout } from '../components'
 import styled, { css, keyframes } from 'styled-components'
-// import avatar from '../avatar.png'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
 import { name, emails, links } from '../config'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
 
 const ringSize = 580
 
-const IndexPage = ({ width }) => (
-  <MainPage>
-    <Container>
-      <ProfileContainer>
-        <ImageGianluca
-          src="https://abitcompany-cdn.sirv.com/personal/avatar.png"
-          alt={name}
-          height="200"
-          width="200"
-        />
-        <Name>{name}</Name>
-        <IconsContainer>
-          {links.map(link => (
-            <SocialIcon
-              social={link.platform}
-              link={link.link}
-              key={link.platform}
-            />
-          ))}
-        </IconsContainer>
-        <EmailsContainer>
-          {emails.map(email => (
-            <EmailLink target="_blank" href={`mailto:${email}`} key={email}>
-              {email}
-            </EmailLink>
-          ))}
-        </EmailsContainer>
-      </ProfileContainer>
-      <Ring red />
-      <Ring green />
-      <Ring blue />
-      <Ring yellow />
-    </Container>
-  </MainPage>
+const IndexPage = ({ data }) => (
+  <BaseLayout>
+    <MainPage>
+      {/* <AnimationContainer> */}
+      {/* <Content> */}
+      <Container>
+        <ProfileContainer>
+          <ImageContainer>
+            <Img fluid={data.avatar.childImageSharp.fluid} />
+          </ImageContainer>
+          <Name>{name}</Name>
+          <IconsContainer>
+            {links.map(link => (
+              <SocialIcon
+                social={link.platform}
+                link={link.link}
+                key={link.platform}
+              />
+            ))}
+          </IconsContainer>
+          <EmailsContainer>
+            {emails.map(email => (
+              <EmailLink target="_blank" href={`mailto:${email}`} key={email}>
+                {email}
+              </EmailLink>
+            ))}
+          </EmailsContainer>
+        </ProfileContainer>
+        {/* <Ring red />
+            <Ring green />
+            <Ring blue />
+            <Ring yellow /> */}
+      </Container>
+      {/* </Content> */}
+      {/* </AnimationContainer> */}
+    </MainPage>
+  </BaseLayout>
 )
+
+export const query = graphql`
+  query {
+    avatar: file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
+// const AnimationContainer = styled.div`
+//   width: 100vw;
+//   height: 100vh;
+//   /* position: absolute;
+//   top: 0;
+//   left: 0; */
+//   background-color: red;
+// `
+const ImageContainer = styled.div`
+  width: 200px;
+  height: 200px;
+`
+
 const redanim = keyframes`
   0%   {transform:  rotate(0deg)   scaleX(0.90) scaleY(1.00);}
   50%  {transform:  rotate(180deg) scaleX(0.90) scaleY(1.00);}
@@ -204,8 +235,12 @@ const Name = styled.h1`
 `
 const Container = styled.div`
   border-radius: 50%;
-  height: ${ringSize - 70}px;
-  width: ${ringSize - 70}px;
+  &.cover {
+    height: 100vh;
+    width: 100vw;
+  }
+  /* height: ${ringSize - 70}px;
+  width: ${ringSize - 70}px; */
   background-color: #fff;
   position: relative;
   display: flex;
@@ -263,6 +298,8 @@ const ImageGianluca = styled.img`
     width: 100px;
   }
 `
+
+// const MainPage = styled.div``
 const MainPage = styled.div`
   min-height: 100vh;
   display: flex;

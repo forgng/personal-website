@@ -4,7 +4,7 @@ import styled, { ThemeProvider, injectGlobal } from 'styled-components'
 import Head from '../components/Head'
 
 const theme = {
-  mainColor: '#b2ebf2',
+  mainColor: '#161338',
   baseTextColor: '#161338',
   smallScreen: '400px',
 }
@@ -13,7 +13,7 @@ const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <div>
       <Head />
-      <main>{children()}</main>
+      <main>{children}</main>
     </div>
   </ThemeProvider>
 )

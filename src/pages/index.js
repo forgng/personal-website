@@ -273,9 +273,10 @@ const Container = styled.div`
     height: ${ringSize - 300}px;
     width: ${ringSize - 300}px;
   }
-  @media screen and (max-width: 475px), (max-height: 475px) {
+  @media screen and (max-width: 475px) {
     height: 350px;
-    width: 350px;
+    width: 100vw;
+    border-radius: 0;
   }
   @media screen and (max-width: 400px) {
     width: 100%;
